@@ -16,7 +16,6 @@ function Get-GitIgnore()
 
     param(
         [Parameter(Position = 0, Mandatory=$false, HelpMessage="Template name")]
-        [ValidateNotNullOrEmpty()]
         [string] $Template
     )
 
@@ -54,7 +53,7 @@ function Add-GitIgnore()
     )
     $content = Get-GitIgnore $Template
     if($content){
-        Out-File -Encoding UTF8 -Filepath .hgignore -NoClobber -InputObject $content
+        Out-File -Encoding UTF8 -Filepath .gitignore -NoClobber -InputObject $content
     }
 }
 
