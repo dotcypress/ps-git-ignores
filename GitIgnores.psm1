@@ -1,3 +1,5 @@
+#requires -version 3
+
 function Get-GitIgnore()
 {
     <#
