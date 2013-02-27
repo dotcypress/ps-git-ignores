@@ -6,7 +6,7 @@ Module for creating .gitignore files via GitHub template
 
 ### Manual
 
-Download [GitIgnores.psm1](https://raw.github.com/dotCypress/ps-git-ignores/master/AddDefaultIgnoreFiles.psm1) and run `Import-Module GitIgnores.psm1`
+Download [GitIgnores.psm1](https://raw.github.com/dotCypress/ps-git-ignores/master/GitIgnores.psm1) and run `Import-Module GitIgnores.psm1`
 <!--
 ### PSGet
 
