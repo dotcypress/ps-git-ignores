@@ -18,17 +18,18 @@ function Get-GitIgnore()
         [Parameter(Position = 0, Mandatory=$false, HelpMessage="Template name")]
         [string] $Template
     )
-
+    $webClient = new-object Net.WebClient
+    $webClient.Headers['User-Agent']='PowerShell/3.0'
     if($Template){
         try{
-            (new-object Net.WebClient).DownloadString("https://api.github.com/gitignore/templates/$Template") | ConvertFrom-Json | Select-Object -ExpandProperty source
+            $webClient.DownloadString("https://api.github.com/gitignore/templates/$Template") | ConvertFrom-Json | Select-Object -ExpandProperty source
         }
         catch [Exception]{
             Write-Error "Template '$Template' not found"
         }
     } else {
         if(!$global:gitIgnoreTemplates){
-            $global:gitIgnoreTemplates = (new-object Net.WebClient).DownloadString("https://api.github.com/gitignore/templates") | ConvertFrom-Json
+            $global:gitIgnoreTemplates = $webClient.DownloadString("https://api.github.com/gitignore/templates") | ConvertFrom-Json
         }
         $global:gitIgnoreTemplates
     }
